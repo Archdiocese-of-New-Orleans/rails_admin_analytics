@@ -1,0 +1,11 @@
+
+en:
+  admin:
+    actions:
+      analytics:
+        title: "Site Analytics"
+        menu: "Analytics"
+        breadcrumb: "Analytics"
+        link: "Analytics"
+        bulk_link: "Analytics"
+        done: "Analyticsed"

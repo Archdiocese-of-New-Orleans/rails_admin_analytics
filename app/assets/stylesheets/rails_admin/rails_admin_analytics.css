@@ -1,0 +1,31 @@
+.stat{
+    padding-top: 10px;
+}
+
+.stat > p {
+    height: 100px;
+    background-color: white;
+    text-align: center;
+    line-height: 3em;
+    font-size: xx-large;
+}
+
+.stat > .well{
+    margin-bottom: 0px;
+}
+
+#page-visits{
+    height: 200px
+}
+
+#new-visits{
+    color: orange;
+}
+
+#page-views{
+    color: lightskyblue;
+}
+
+#bounces{
+    color: lightcoral;
+}
