@@ -8,21 +8,25 @@
   .row
     .span4
       .stat
-        .well.text-center.stat New Visits
+        .well.text-center New Visits
         %p#new-visits
     .span4
       .stat
-        .well.text-center.stat Page Views
+        .well.text-center Page Views
         %p#page-views
     .span4
       .stat
-        .well.text-center.stat Bounces
+        .well.text-center Bounces
         %p#bounces
 
 = javascript_include_tag 'rails_admin/rails_admin_analytics'
 = stylesheet_link_tag 'rails_admin/rails_admin_analytics'
 
 :javascript
+  var $page_visits = $("#page-visits").spin();
+  var $new_visits = $("#new-visits").spin();
+  var $page_views = $("#page-views").spin();
+  var $bounces = $("#bounces").spin();
   window.onload = function(){
 
       oo.setAPIKey("#{RailsAdminAnalytics.oocharts_api_key}");
@@ -32,18 +36,18 @@
           var timeline = new oo.Timeline("#{RailsAdminAnalytics.oocharts_profile_id}", "30d");
           timeline.addMetric("ga:visits", "Visits");
           timeline.addMetric("ga:newVisits", "New Visits");
-          timeline.draw('page-visits');
+          timeline.draw('page-visits', function(){ $page_visits.spin(false); });
 
           var new_visits = new oo.Metric("#{RailsAdminAnalytics.oocharts_profile_id}", "0d");
           new_visits.setMetric("ga:newVisits");
-          new_visits.draw('new-visits');
+          new_visits.draw('new-visits', function(){ $new_visits.spin(false); });
 
           var page_views = new oo.Metric("#{RailsAdminAnalytics.oocharts_profile_id}", "0d");
           page_views.setMetric("ga:pageviews");
-          page_views.draw('page-views');
+          page_views.draw('page-views', function(){ $page_views.spin(false); });
 
           var bounces = new oo.Metric("#{RailsAdminAnalytics.oocharts_profile_id}", "0d");
-          bounces.setMetric("ga:bounces");
+          bounces.setMetric("ga:bounces", function(){ $bounces.spin(false); });
           bounces.draw('bounces');
 
       });

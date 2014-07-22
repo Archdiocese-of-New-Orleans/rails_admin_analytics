@@ -1,4 +1,5 @@
 require "rails_admin_analytics/engine"
+require 'spinjs-rails'
 
 module RailsAdminAnalytics
   require 'railtie' if defined?(Rails)
