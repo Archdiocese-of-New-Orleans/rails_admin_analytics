@@ -2,7 +2,6 @@ require "rails_admin_analytics/engine"
 require 'spinjs-rails'
 
 module RailsAdminAnalytics
-  require 'railtie' if defined?(Rails)
   class Engine < ::Rails::Engine
     initializer "RailsAdmin precompile hook", group: :all do |app|
       app.config.assets.precompile += %w(rails_admin/oocharts.js rails_admin/rails_admin_analytics.js rails_admin/rails_admin_analytics.css)
