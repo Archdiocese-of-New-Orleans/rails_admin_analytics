@@ -15,17 +15,21 @@
 }
 
 #page-visits{
-    height: 200px
+    height: 200px;
+    position: relative;
 }
 
 #new-visits{
     color: orange;
+    position: relative;
 }
 
 #page-views{
     color: lightskyblue;
+    position: relative;
 }
 
 #bounces{
     color: lightcoral;
+    position: relative;
 }
