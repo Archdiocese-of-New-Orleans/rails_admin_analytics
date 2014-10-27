@@ -7,8 +7,7 @@ module RailsAdminAnalytics
     end
   end
 
-  mattr_accessor :oocharts_api_key
-  mattr_accessor :oocharts_profile_id
+  mattr_accessor :charts
 
   def self.config
     yield self

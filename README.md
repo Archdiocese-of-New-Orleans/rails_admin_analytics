@@ -1,7 +1,7 @@
 rails_admin_analytics
 =========
 
-Adds basic OOCharts/Google Analytics charts to your rails_admin instance.  You need a [Google Analytics]  and [OOcharts] account.
+Adds SuperProxy/Google Analytics charts to your rails_admin instance.  You need a [Google Analytics] account and a [SuperProxy] instance already setup.
 
 Add to your Gemfile then bundle install:
 ```ruby
@@ -13,11 +13,6 @@ Install the config. file with:
 rails g rails_admin_analytics:install
 ```
 
-Generate an oocharts api key for your site and add it and the profile id to:
-```ruby
-config/initializers/rails_admin_analytics.rb
-```
-
 Add 'analytics' to your config/initializers/rails_admin.rb config.actions.  E.g.
 ```ruby
 config.actions do
@@ -27,5 +22,7 @@ config.actions do
     ...
 ```
 
-[OOcharts]:http://oocharts.com/
+Add to the config/initializers/rails_admin.rb charts array Google Visualization ChartWrapper objects.  See config/initializers/rails_admin.rb for example.
+
+[SuperProxy]:https://github.com/googleanalytics/google-analytics-super-proxy
 [Google Analytics]:http://www.google.com/analytics/

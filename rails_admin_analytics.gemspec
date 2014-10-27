@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["djohn@arch-no.org"]
   s.homepage    = "http://it.arch-no.org"
   s.summary     = "A Google analytics dashboard for Rails Admin"
-  s.description = "Uses OOCharts and your Google Anlaytics account to embed charts into your rails_admin dashboard."
+  s.description = "Uses your prebuilt SuperProxy query with your Google Analytics account to embed charts into your rails_admin dashboard."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

@@ -1,0 +1,17 @@
+<script src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1"}]}'></script>
+<script>
+  google.setOnLoadCallback(drawVisualization);
+
+  function drawVisualization() {
+    <% RailsAdminAnalytics.charts.each do |chart| %>
+      new google.visualization.ChartWrapper(<%= chart.to_json.html_safe %>).draw();
+     <% end %>
+  }
+</script>
+
+<% RailsAdminAnalytics.charts.each do |chart| %>
+    <% if chart['options'] && chart['options']['title'] %>
+        <h1><%= chart['options']['title'] %></h1>
+    <% end %>
+    <div id="<%= chart['containerId'] %>" style="width:100%;"></div>
+<% end %>
