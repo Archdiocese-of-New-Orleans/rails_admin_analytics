@@ -1,6 +1,14 @@
 rails_admin_analytics
 =========
 
+---
+IMPORTANT
+=========
+
+OOCharts has been discontinued.  Please see the super_proxy branch for an alternative.
+
+---
+
 Adds basic OOCharts/Google Analytics charts to your rails_admin instance.  You need a [Google Analytics]  and [OOcharts] account.
 
 Add to your Gemfile then bundle install:
