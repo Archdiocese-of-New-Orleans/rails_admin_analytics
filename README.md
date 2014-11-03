@@ -22,7 +22,7 @@ config.actions do
     ...
 ```
 
-Add to the config/initializers/rails_admin.rb charts array Google Visualization ChartWrapper objects.  See config/initializers/rails_admin.rb for example.
+Add to the config/initializers/rails_admin_analytics.rb charts array Google Visualization ChartWrapper objects.  See config/initializers/rails_admin_analytics.rb for example.
 
 [SuperProxy]:https://github.com/googleanalytics/google-analytics-super-proxy
 [Google Analytics]:http://www.google.com/analytics/

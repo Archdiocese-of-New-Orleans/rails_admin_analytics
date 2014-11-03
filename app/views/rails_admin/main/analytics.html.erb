@@ -10,8 +10,8 @@
 </script>
 
 <% RailsAdminAnalytics.charts.each do |chart| %>
-    <% if chart['options'] && chart['options']['title'] %>
-        <h1><%= chart['options']['title'] %></h1>
+    <% if chart[:options] && chart[:options][:title] %>
+        <h1><%= chart[:options][:title] %></h1>
     <% end %>
-    <div id="<%= chart['containerId'] %>" style="width:100%;"></div>
+    <div id="<%= chart[:containerId] %>" style="width:100%;"></div>
 <% end %>
