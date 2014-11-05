@@ -1,4 +1,6 @@
+<%= stylesheet_link_tag 'rails_admin/rails_admin_analytics' %>
 <script src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1"}]}'></script>
+<%= javascript_include_tag 'rails_admin/rails_admin_analytics' %>
 <script>
   google.setOnLoadCallback(drawVisualization);
 
@@ -10,8 +12,13 @@
 </script>
 
 <% RailsAdminAnalytics.charts.each do |chart| %>
-    <% if chart[:options] && chart[:options][:title] %>
-        <h1><%= chart[:options][:title] %></h1>
-    <% end %>
-    <div id="<%= chart[:containerId] %>" style="width:100%;"></div>
+    <div class="row">
+        <div class="span12">
+            <div class="container-fluid rails_admin_analytics" id="<%= chart[:containerId] %>"></div>
+        </div>
+    </div>
 <% end %>
+
+<script>
+  $(".rails_admin_analytics").spin();
+</script>

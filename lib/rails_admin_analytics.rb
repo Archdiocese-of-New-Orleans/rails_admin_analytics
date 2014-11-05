@@ -1,6 +1,11 @@
 require "rails_admin_analytics/engine"
 
 module RailsAdminAnalytics
+  class Engine < ::Rails::Engine
+    initializer "RailsAdmin precompile hook", group: :all do |app|
+      app.config.assets.precompile += %w(rails_admin/jquery.spin.js rails_admin/spin.js rails_admin/rails_admin_analytics.js rails_admin/rails_admin_analytics.css)
+    end
+  end
   mattr_accessor :charts
 
   def self.config
