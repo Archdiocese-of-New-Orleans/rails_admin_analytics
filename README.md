@@ -5,7 +5,7 @@ rails_admin_analytics
 IMPORTANT
 =========
 
-OOCharts has been discontinued.  Please see the super_proxy branch for an alternative.
+OOCharts has been discontinued.  Please see the embed_api or super_proxy branch for an alternative.
 
 ---
 
