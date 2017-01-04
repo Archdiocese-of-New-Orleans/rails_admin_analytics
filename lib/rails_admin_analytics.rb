@@ -27,8 +27,11 @@ module RailsAdminAnalytics
   end
 
   def self.access_token
-    @token ||= google_client.authorization.fetch_access_token!
-    @token["access_token"]
+    Rails.cache.fetch("rails_admin_analytics/access_token"){
+      token = google_client.authorization.fetch_access_token!
+      Rails.cache.write("rails_admin_analytics/access_token", token["access_token"], expires_in: token["expires_in"])
+      token["access_token"]
+    }
   end
 
 end
