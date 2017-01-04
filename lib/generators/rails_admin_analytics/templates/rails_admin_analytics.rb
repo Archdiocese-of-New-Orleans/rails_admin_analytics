@@ -1,4 +1,4 @@
 RailsAdminAnalytics.config do |config|
-  config.oocharts_api_key = ''
-  config.oocharts_profile_id = ''
+  config.client_secrets_json_path = '' # DO NOT ADD THIS FILE TO YOUR GIT REPO!!!!
+  config.analytics_view_id = '' # The id of your view obtained from the Google analytics dashboard
 end

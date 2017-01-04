@@ -11,10 +11,12 @@ Gem::Specification.new do |s|
   s.email       = ["djohn@arch-no.org"]
   s.homepage    = "http://it.arch-no.org"
   s.summary     = "A Google analytics dashboard for Rails Admin"
-  s.description = "Uses OOCharts and your Google Anlaytics account to embed charts into your rails_admin dashboard."
+  s.description = "Uses Google analytics embed api to embed a basic chart into your rails_admin dashboard."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 4.1.0"
+  s.add_dependency "rails", ">= 4.1"
+  s.add_runtime_dependency "google-api-client", "0.8.6"
+  s.add_runtime_dependency "googleauth", "~> 0.3"
 end

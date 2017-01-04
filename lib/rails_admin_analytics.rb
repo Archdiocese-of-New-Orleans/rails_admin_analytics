@@ -1,18 +1,36 @@
 require "rails_admin_analytics/engine"
+require 'google/api_client'
+require 'googleauth'
 
 module RailsAdminAnalytics
   class Engine < ::Rails::Engine
     initializer "RailsAdmin precompile hook", group: :all do |app|
-      app.config.assets.precompile += %w(rails_admin/oocharts.js rails_admin/jquery.spin.js rails_admin/spin.js rails_admin/rails_admin_analytics.js rails_admin/rails_admin_analytics.css)
+      app.config.assets.precompile += %w()
     end
   end
 
-  mattr_accessor :oocharts_api_key
-  mattr_accessor :oocharts_profile_id
+  mattr_accessor :client_secrets_json_path
+  mattr_accessor :analytics_view_id
 
   def self.config
     yield self
   end
+
+  def self.json_key_io
+    File.open client_secrets_json_path
+  end
+
+  def self.google_client
+    client = Google::APIClient.new( application_name: 'rails_admin_analytics', application_version: '0.1')
+    client.authorization = Google::Auth::ServiceAccountCredentials.make_creds(json_key_io: json_key_io, scope: 'https://www.googleapis.com/auth/analytics.readonly')
+    client
+  end
+
+  def self.access_token
+    @token ||= google_client.authorization.fetch_access_token!
+    @token["access_token"]
+  end
+
 end
 
 require 'rails_admin/config/actions'

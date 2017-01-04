@@ -5,15 +5,15 @@ rails_admin_analytics
 IMPORTANT
 =========
 
-OOCharts has been discontinued.  Please see the super_proxy branch for an alternative.
+Before you can use this, you need: 
 
----
-
-Adds basic OOCharts/Google Analytics charts to your rails_admin instance.  You need a [Google Analytics]  and [OOcharts] account.
+1. A [Google Analytics] account and the 'view id' of a report you want to display (obtained from the Analytics dashboard).
+2. A 'service account' created from the [Google developer console] and added to the permissions in your Google Analytics account view/property.
+3. Generate json client credentials from the [Google developer console].  The json file should be accessible from your Rails app but DO NOT COMMIT IT TO YOUR GIT REPO!
 
 Add to your Gemfile then bundle install:
 ```ruby
-gem 'rails_admin_analytics', github: 'Archdiocese-of-New-Orleans/rails_admin_analytics'
+gem 'rails_admin_analytics', github: 'Archdiocese-of-New-Orleans/rails_admin_analytics', branch: 'embed_api'
 ```
 
 Install the config. file with:
@@ -21,7 +21,7 @@ Install the config. file with:
 rails g rails_admin_analytics:install
 ```
 
-Generate an oocharts api key for your site and add it and the profile id to:
+Add the path to your json client secrets and Analytics view id to:
 ```ruby
 config/initializers/rails_admin_analytics.rb
 ```
@@ -35,5 +35,5 @@ config.actions do
     ...
 ```
 
-[OOcharts]:http://oocharts.com/
+[Google developer console]:https://console.developers.google.com/
 [Google Analytics]:http://www.google.com/analytics/

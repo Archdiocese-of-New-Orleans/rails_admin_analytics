@@ -1,0 +1,46 @@
+<%= javascript_include_tag 'rails_admin/rails_admin_analytics' %>
+<script>
+(function(w,d,s,g,js,fs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+}(window,document,'script'));
+</script>
+
+<div id="chart-container"></div>
+
+<script>
+
+  $(".rails_admin_analytics").spin();
+
+  // Straight from: https://ga-dev-tools.appspot.com/embed-api/server-side-authorization/
+  gapi.analytics.ready(function() {
+
+    gapi.analytics.auth.authorize({
+      'serverAuth': {
+        'access_token': '<%= RailsAdminAnalytics.access_token %>'
+      }
+    });
+
+    var dataChart = new gapi.analytics.googleCharts.DataChart({
+      query: {
+        'ids': 'ga:<%= RailsAdminAnalytics.analytics_view_id %>', // <-- Replace with the ids value for your view.
+        'start-date': '30daysAgo',
+        'end-date': 'yesterday',
+        'metrics': 'ga:sessions,ga:users',
+        'dimensions': 'ga:date'
+      },
+      chart: {
+        'container': 'chart-container',
+        'type': 'LINE',
+        'options': {
+          'width': '100%'
+        }
+      }
+    });
+
+    dataChart.execute();
+
+  });
+</script>
